@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  #fdigitalfilter_webapp_rontend:
+  #  build:
+  #    context: ./frontend
+  #    dockerfile: Dockerfile
+  #  environment:
+  #  restart: always
+
+  digitalfilter_webapp_backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 5000:80
+    restart: always
