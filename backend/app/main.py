@@ -23,7 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 class Info(BaseModel):
     sampling_freq: float
     freq_pass: list
@@ -36,10 +35,8 @@ class Info(BaseModel):
 def read_root():
     return {"Hello": "World"}
 
-
 @app.post("/get_infomation")
 def read_params(info: Info):
-
     #print(info)
     fn = float(info.sampling_freq) / 2
     freq_pass = [float(info.freq_pass[0]), float(info.freq_pass[1])]
@@ -59,7 +56,7 @@ def read_params(info: Info):
     for i in range(5, len(y1)):
         tmp1 = 0
         tmp2 = 0
-        if(np.abs(y1[i-1]) > 100):
+        if(np.abs(y1[i-1]) > 10000):
             y1[i-1] = 0
             y1[i-2] = 0
             y1[i-3] = 0
@@ -81,5 +78,4 @@ def read_params(info: Info):
     base64_data = base64.b64encode(jpg_data).decode()
     
     return {"result": {"status": 0, "a": str(a), "b": str(b), "filterd": str(y1), "filterd_img": base64_data}}
-   
 
