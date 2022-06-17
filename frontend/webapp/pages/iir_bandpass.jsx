@@ -61,13 +61,16 @@ export default function IIR_bandpass() {
       data: input_data,
     };
     console.log(input);
-    const res = await fetch('http://localhost:8000/get_infomation', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(input),
-    }).catch(() => null);
+    const res = await fetch(
+      `${process.env.DOMAIN_BACKEND}${process.env.SUBDIR_BACKEND}/get_information`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input),
+      }
+    ).catch(() => null);
     if (res == null) {
       alert('Error');
       return;
