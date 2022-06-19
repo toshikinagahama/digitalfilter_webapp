@@ -1,0 +1,1 @@
+self.__BUILD_MANIFEST={__rewrites:{beforeFiles:[],afterFiles:[],fallback:[]},"/":["static/chunks/pages/index-ead82f59391dca53.js"],"/_error":["static/chunks/pages/_error-0a004b8b8498208d.js"],"/iir_bandpass":["static/chunks/pages/iir_bandpass-3d19673a61f4ccfd.js"],sortedPages:["/","/_app","/_error","/iir_bandpass"]},self.__BUILD_MANIFEST_CB&&self.__BUILD_MANIFEST_CB();

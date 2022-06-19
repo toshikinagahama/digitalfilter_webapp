@@ -1,5 +1,7 @@
 from typing import Optional
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pylab as plt
 from fastapi import FastAPI
 from scipy import signal
@@ -13,6 +15,7 @@ app = FastAPI()
 origins = [
     "http://localhost:8000",
     "http://localhost:3000",
+    "https://lab.nghmst.com",
 ]
 
 app.add_middleware(
@@ -31,11 +34,7 @@ class Info(BaseModel):
     gain_cutoff: float
     data: list
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-@app.post("/get_infomation")
+@app.post("/api/get_information")
 def read_params(info: Info):
     #print(info)
     fn = float(info.sampling_freq) / 2
@@ -79,3 +78,4 @@ def read_params(info: Info):
     
     return {"result": {"status": 0, "a": str(a), "b": str(b), "filterd": str(y1), "filterd_img": base64_data}}
 
+# app.mount("/web", StaticFiles(directory="../out", html=True), name="html")

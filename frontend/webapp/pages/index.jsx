@@ -13,7 +13,7 @@ export default function Home() {
 
       <div className="w-screen min-h-screen from-cyan-400 bg-gradient-to-br to-blue-500">
         <div className="max-w-4xl flex flex-col items-center justify-center pt-12 mx-auto">
-          <Link href="iir_bandpass">
+          <Link href="/iir_bandpass">
             <a>IIR bandpass</a>
           </Link>
         </div>
