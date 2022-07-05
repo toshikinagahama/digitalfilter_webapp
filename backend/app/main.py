@@ -64,11 +64,14 @@ def read_params(info: Info):
         for ii in range(1, len(a)):
             tmp2 += a[ii] * y1[i - ii]
         y1[i] = (tmp1 - tmp2)
+
+    x = [i * (1.0 / info.sampling_freq) for i in range(len(y0))]
+
     
     # 画像の生成
     fig, ax = plt.subplots(figsize=(16, 4))
-    ax.plot(np.array(y0) - np.mean(y0), label="original_offset")
-    ax.plot(y1, label="filterd")
+    ax.plot(x, np.array(y0) - np.mean(y0), label="original_offset")
+    ax.plot(x, y1, label="filterd")
     plt.legend()
     ofs = BytesIO()
     fig.savefig(ofs, format="jpg")
